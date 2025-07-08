@@ -3,10 +3,10 @@
 A secure, scalable, and data-driven **Decision Support System (DSS)** integrated with an **Inventory Management System (IMS)** for pharmaceutical wholesalers.
 
 This system enables:
-- ✅ Product & inventory tracking
-- ✅ Supplier & sales management
-- ✅ Automated reorder suggestions
-- ✅ Data-driven analytics & reports
+- Product & inventory tracking
+- Supplier & sales management
+- Automated reorder suggestions
+- Data-driven analytics & reports
 
 ---
 
