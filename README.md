@@ -10,6 +10,20 @@ This system enables:
 
 ---
 
+## Demo Access / Credentials
+
+Use the following test accounts to explore the system by role:
+
+| Role                  | Username  | Password |
+
+| Admin              | `admin`   | `password` 
+| Inventory Manager  | `manager` | `password` |
+| Sales Clerk        | `clerk`   | `password` |
+
+These are demo credentials for testing purposes only. In production, make sure to change all default passwords and secure user registration.
+
+---
+
 ## Core Modules & Features
 
 ### 1. User Authentication & Role-Based Access
@@ -59,3 +73,26 @@ Products   (id, name, quantity, expiry_date, reorder_level)
 Suppliers  (id, name, contact_person, phone, email)
 Sales      (id, product_id, quantity, date_sold)
 Orders     (id, product_id, quantity_ordered, status)
+
+## Getting Started
+
+### Installation
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/Mandela-Inegbedion/pharma_inventory_system.git
+
+cd pharma_inventory_system
+
+# 2. Install dependencies
+npm install
+
+# 3. Setup your environment
+cp .env.local.example .env.local
+
+# 4. Run DB migrations
+npx prisma migrate dev   # or npx sequelize db:migrate
+
+# 5. Start the dev server
+npm run dev
+
