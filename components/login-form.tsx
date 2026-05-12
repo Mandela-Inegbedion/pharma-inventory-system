@@ -32,6 +32,27 @@ export function LoginForm() {
     setLoading(false)
   }
 
+  const fillDemoAccount = (demoUsername: string, demoPassword: string) => {
+    setUsername(demoUsername)
+    setPassword(demoPassword)
+  }
+
+  const copyCredentials = async (demoUsername: string, demoPassword: string, roleLabel: string) => {
+    try {
+      await navigator.clipboard.writeText(`Username: ${demoUsername}\nPassword: ${demoPassword}`)
+      toast({
+        title: "Credentials copied",
+        description: `${roleLabel} credentials copied to clipboard`,
+      })
+    } catch {
+      toast({
+        title: "Copy failed",
+        description: "Could not access clipboard. Please copy manually.",
+        variant: "destructive",
+      })
+    }
+  }
+
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
@@ -58,6 +79,63 @@ export function LoginForm() {
             {loading ? "Signing in..." : "Sign In"}
           </Button>
         </form>
+        <div className="mt-6 border-t pt-4">
+          <p className="text-sm font-medium mb-3">Demo Accounts</p>
+          <div className="space-y-2">
+            <div className="grid grid-cols-[1fr_auto] gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                className="justify-start"
+                onClick={() => fillDemoAccount("admin", "password")}
+              >
+                Admin (admin / password)
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => copyCredentials("admin", "password", "Admin")}
+              >
+                Copy
+              </Button>
+            </div>
+            <div className="grid grid-cols-[1fr_auto] gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                className="justify-start"
+                onClick={() => fillDemoAccount("manager", "password")}
+              >
+                Inventory Manager (manager / password)
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => copyCredentials("manager", "password", "Inventory Manager")}
+              >
+                Copy
+              </Button>
+            </div>
+            <div className="grid grid-cols-[1fr_auto] gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                className="justify-start"
+                onClick={() => fillDemoAccount("clerk", "password")}
+              >
+                Sales Clerk (clerk / password)
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => copyCredentials("clerk", "password", "Sales Clerk")}
+              >
+                Copy
+              </Button>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground mt-3">Demo credentials for local testing only.</p>
+        </div>
       </CardContent>
     </Card>
   )
